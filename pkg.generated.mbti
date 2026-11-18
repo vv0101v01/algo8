@@ -1,0 +1,250 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "arena/math-structures"
+
+// Values
+pub fn absorption_time_linear_solve(Array[Array[Double]], Array[Double]) -> Array[Double]
+
+pub fn absorption_time_series(Int32, Array[Array[Double]], Int32, Double) -> Double
+
+pub fn adjacency_is_hermitian(NonCommGraph, Double) -> Bool
+
+pub fn all_monotone_maps_have_fixed_point() -> Bool
+
+pub fn approx(Double, Double, Double) -> Bool
+
+pub fn build_global_section(Array[Array[Double]], Array[Array[Double]], Int32, Double) -> Bool
+
+pub fn cantor_pair(Int32, Int32) -> Int32
+
+pub fn cantor_unpair(Int32) -> (Int32, Int32)
+
+pub fn cayley_hamilton_2x2(Array[Array[Quat]], Double) -> Bool
+
+pub fn classic_embed(Bool) -> FourVal
+
+pub fn cocycle_condition(Array[Double], Array[Double], Array[Double], Double) -> Bool
+
+pub fn count_terminal_arrows(Int32) -> Int32
+
+pub fn default_neural_h() -> NeuralH
+
+pub fn emergent_commutator_trace(Array[Double], Array[Double], Array[Double], Double) -> Bool
+
+pub fn emergent_spectral_gap(Array[Double]) -> Double
+
+pub fn energy_drift(Bool, Int32, Double) -> Double
+
+pub fn explicit_euler_step(NeuralH, Array[Double], Array[Double], Double) -> (Array[Double], Array[Double])
+
+pub fn explicit_identity_residual(NeuralH, Array[Double], Array[Double], Double) -> Double
+
+pub fn explosion_counterexample_exists() -> Bool
+
+pub fn field_axioms_hold(Array[Complex]) -> Bool
+
+pub fn four_le(FourVal, FourVal) -> Bool
+
+pub fn functor_laws_product_with_k(Int32, Int32, Int32) -> Bool
+
+pub fn functor_laws_synergetic(SynergeticNet, Array[Double], Array[Double], Array[Double]) -> Bool
+
+pub fn gaussian_int_norms(Int32) -> Array[Int32]
+
+pub fn hermitian2_eigs(Hermitian2) -> (Double, Double)
+
+pub fn hermitian2_projector_plus(Hermitian2) -> (Double, Double, Quat)
+
+pub fn k0_additivity(Double, Double, Double) -> Bool
+
+pub fn k0_spectral_identity(Hermitian2, Double) -> Bool
+
+pub fn memory_absorbing_matrix() -> Array[Array[Double]]
+
+pub fn memory_closed_form(Double, Double, Double, Int32) -> Double
+
+pub fn memory_ergodic_matrix() -> Array[Array[Double]]
+
+pub fn order_parameter_wta(Array[Double], Double, Int32) -> Array[Int32]
+
+pub fn pair(Cone, Int32, Int32) -> Hom
+
+pub fn patch_sections(Array[Double], Array[Double], Array[Double], Double) -> Bool
+
+pub fn phase_index(Phase) -> Int32
+
+pub fn product_pi1(Int32, Int32) -> Hom
+
+pub fn product_pi2(Int32, Int32) -> Hom
+
+pub fn rayleigh_imag_residual(Hermitian2, Array[Quat]) -> Double
+
+pub fn rayleigh_real(Hermitian2, Array[Quat]) -> Double
+
+pub fn rebuild_from_coords(Double, Double) -> Complex
+
+pub fn slaving_fixed_point(Double, Double) -> Double
+
+pub fn slaving_run(Double, Double, Double, Int32) -> Double
+
+pub fn slaving_step(Double, Double, Double, Double) -> Double
+
+pub fn stationary_power_iteration(Array[Array[Double]], Int32) -> Array[Double]
+
+pub fn strong_basis_coords(Complex) -> (Double, Double)
+
+pub fn symplectic_det_area(Array[Double], Array[Double], Double) -> Double
+
+pub fn symplectic_euler_step(NeuralH, Array[Double], Array[Double], Double) -> (Array[Double], Array[Double])
+
+pub fn symplectic_identity_residual(NeuralH, Array[Double], Array[Double], Double) -> Double
+
+pub fn terminal_is_unique_up_to_iso() -> Bool
+
+pub fn terminal_unique_arrow(Int32) -> Hom
+
+pub fn universal_property_product_witness(Int32, Int32, Int32) -> Bool
+
+pub fn wta_argmax_stable(Array[Double]) -> Bool
+
+// Errors
+
+// Types and methods
+pub(all) struct Complex {
+  re : Double
+  im : Double
+}
+pub fn Complex::add(Self, Self) -> Self
+pub fn Complex::conj(Self) -> Self
+pub fn Complex::div(Self, Self) -> Self
+pub fn Complex::i_unit() -> Self
+pub fn Complex::is_zero(Self) -> Bool
+pub fn Complex::mul(Self, Self) -> Self
+pub fn Complex::new(Double, Double) -> Self
+pub fn Complex::norm(Self) -> Double
+pub fn Complex::norm2(Self) -> Double
+pub fn Complex::one() -> Self
+pub fn Complex::sub(Self, Self) -> Self
+pub fn Complex::zero() -> Self
+
+pub(all) struct Cone {
+  c_size : Int32
+  f : Array[Int32]
+  g : Array[Int32]
+}
+
+pub(all) enum FourVal {
+  Nv
+  Fv
+  Tv
+  Bv
+}
+pub fn FourVal::join(Self, Self) -> Self
+pub fn FourVal::land(Self, Self) -> Self
+pub fn FourVal::lor(Self, Self) -> Self
+pub fn FourVal::meet(Self, Self) -> Self
+pub fn FourVal::neg(Self) -> Self
+pub fn FourVal::to_string(Self) -> String
+
+pub(all) struct Gates {
+  forget : Double
+  input : Double
+  output : Double
+  candidate : Double
+}
+
+pub(all) struct Hermitian2 {
+  a : Double
+  b : Double
+  q : Quat
+}
+
+pub(all) struct Hom {
+  src : Int32
+  dst : Int32
+  map : Array[Int32]
+}
+pub fn Hom::compose(Self, Self) -> Self
+pub fn Hom::identity(Int32) -> Self
+pub fn Hom::is_identity(Self) -> Bool
+
+pub(all) struct Layer {
+  w : Array[Array[Double]]
+  b : Array[Double]
+}
+pub fn Layer::activate(Self, Array[Double]) -> Array[Double]
+
+pub(all) struct MemoryCell {
+  c : Double
+  h : Double
+}
+pub fn MemoryCell::step(Self, Gates) -> Self
+
+pub(all) struct MultiWorld {
+  worlds : Array[ParaUniverse]
+}
+pub fn MultiWorld::merge_pointwise(Self) -> Array[FourVal]
+
+pub(all) struct NeuralH {
+  tw : Array[Double]
+  va : Array[Double]
+  vw : Array[Array[Double]]
+  vb : Array[Double]
+}
+pub fn NeuralH::energy(Self, Array[Double], Array[Double]) -> Double
+pub fn NeuralH::grad_kinetic(Self, Array[Double]) -> Array[Double]
+pub fn NeuralH::grad_potential(Self, Array[Double]) -> Array[Double]
+pub fn NeuralH::kinetic(Self, Array[Double]) -> Double
+pub fn NeuralH::potential(Self, Array[Double]) -> Double
+
+pub(all) struct NonCommGraph {
+  n : Int32
+  weights : Array[Array[Quat]]
+}
+pub fn NonCommGraph::adjacency(Self) -> Array[Array[Quat]]
+
+pub(all) struct Obj {
+  tag : Int32
+}
+
+pub(all) struct ParaUniverse {
+  props : Array[String]
+  vals : Array[FourVal]
+}
+pub fn ParaUniverse::lookup(Self, String) -> FourVal?
+pub fn ParaUniverse::new(Array[String], Array[FourVal]) -> Self
+
+pub(all) enum Phase {
+  ShortTerm
+  Encoding
+  LongTerm
+  Retrieval
+  Lost
+}
+
+pub(all) struct Quat {
+  w : Double
+  x : Double
+  y : Double
+  z : Double
+}
+pub fn Quat::add(Self, Self) -> Self
+pub fn Quat::conj(Self) -> Self
+pub fn Quat::div(Self, Self) -> Self
+pub fn Quat::mul(Self, Self) -> Self
+pub fn Quat::neg(Self) -> Self
+pub fn Quat::new(Double, Double, Double, Double) -> Self
+pub fn Quat::norm(Self) -> Double
+pub fn Quat::norm2(Self) -> Double
+pub fn Quat::one() -> Self
+pub fn Quat::zero() -> Self
+
+pub(all) struct SynergeticNet {
+  encoder : Layer
+  n_order : Int32
+}
+pub fn SynergeticNet::encode(Self, Array[Double]) -> Array[Double]
+pub fn SynergeticNet::push_morphism(Self, Array[Double], Array[Double]) -> Array[Double]
+
+// Type aliases
+
+// Traits
